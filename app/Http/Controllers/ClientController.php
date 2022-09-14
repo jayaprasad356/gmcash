@@ -43,4 +43,35 @@ class ClientController extends Controller
         return view('admin-views.client.list', compact('clients'));
     }
 
+    public function editClient($id)
+    {
+        $client = Client::find($id);
+        $clients = Client::all();
+        return view('admin-views.client.edit', compact('client'));
+    }
+
+    public function updateClient(Request $request, $id)
+    {
+        $client=Client::find($id);
+        $client->name=$request->input('name');
+        $client->email=$request->input('email');
+        $client->mobile=$request->input('mobile');
+        $client->platform=$request->input('platform');
+        $client->address=$request->input('address');
+        $client->city=$request->input('city');
+        $client->state=$request->input('state');
+        $client->country=$request->input('country');
+        $client->save();
+        Toastr::success('Client Details Updated Successfully!');
+        return back();
+        
+    }
+
+    public function destroyClient($id)
+    {
+        $client=Client::find($id);
+        $client->delete();
+        return back();
+    }
+
 }

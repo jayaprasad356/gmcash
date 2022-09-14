@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Edit Project')
+@section('title', 'Edit Client')
 
 @push('css_or_js')
 
@@ -13,22 +13,29 @@
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
                     <h1 class="page-header-title"><i
-                            class="tio-add-circle-outlined"></i> Update Project</h1>
+                            class="tio-add-circle-outlined"></i> Edit Client</h1>
                 </div>
             </div>
         </div>
         <!-- End Page Header -->
         <div class="row gx-2 gx-lg-3">
             <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2 card card-body">
-                <form action="{{url('/updateProject/'.$project->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{url('/updateClient/'.$client->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label class="input-label"
-                                       for="exampleFormControlInput1">Project Name</label>
-                                <input type="text" name="name" class="form-control" value="{{ $project->name }}"
-                                       placeholder="Project Name"
+                                       for="exampleFormControlInput1">First Name</label>
+                                <input type="text" name="name" class="form-control" value="{{$client->name}}"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label class="input-label"
+                                       for="exampleFormControlInput1">Mobile Number</label>
+                                <input type="text" name="mobile" class="form-control" value="{{$client->mobile}}"
                                        required>
                             </div>
                         </div>
@@ -37,42 +44,58 @@
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label class="input-label"
-                                       for="exampleFormControlInput1">Category</label>
-                                <select name="category" id="category" class="form-control" >
-                                    <option value="app" {{ $project->category == 'app' ? 'selected' : '' }}>App</option>
-                                    <option value="web" {{ $project->category == 'web' ? 'selected' : '' }}>Web</option>
-                                    <option value="both" {{ $project->category == 'both' ? 'selected' : '' }}>Both</option>
-                                </select>
-
+                                       for="exampleFormControlInput1">Email</label>
+                                <input type="text" name="email" class="form-control" value="{{$client->email}}"
+                                       required>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label class="input-label"
-                                       for="exampleFormControlInput1">Client</label>
-                                <select name="client_id" id="client_id" class="form-control" >
-                                @foreach($clients as $key=>$client)
-                                    <option value="{{ $client->id }}" {{ $client->id == $project->client_id ? 'selected' : '' }}>{{ $client->name }}</option>
-                                @endforeach
-                                </select>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label class="input-label"
-                                       for="exampleFormControlInput1">Description</label>
-                                <input type="text" name="description" class="form-control"
-                                value="{{ $project->description }}"
+                                       for="exampleFormControlInput1">Platform</label>
+                                <input type="text" name="platform" class="form-control" value="{{$client->platform}}"
                                        required>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" value="updateProject" class="btn btn-primary">submit</button>
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label class="input-label"
+                                       for="exampleFormControlInput1">Address</label>
+                                <input type="text" name="address" class="form-control" value="{{$client->address}}"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label class="input-label"
+                                       for="exampleFormControlInput1">City</label>
+                                <input type="text" name="city" class="form-control"value="{{$client->city}}"
+                                       required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label class="input-label"
+                                       for="exampleFormControlInput1">State</label>
+                                <input type="text" name="state" class="form-control" value="{{$client->state}}"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label class="input-label"
+                                       for="exampleFormControlInput1">Country</label>
+                                <input type="text" name="country" class="form-control" value="{{$client->country}}"
+                                       required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" value="updateClient" class="btn btn-primary">submit</button>
                 </form>
             </div>
         </div>

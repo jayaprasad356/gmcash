@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Edit Project')
+@section('title', 'Edit Staff')
 
 @push('css_or_js')
 
@@ -13,22 +13,29 @@
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
                     <h1 class="page-header-title"><i
-                            class="tio-add-circle-outlined"></i> Update Project</h1>
+                            class="tio-add-circle-outlined"></i> Edit Staff</h1>
                 </div>
             </div>
         </div>
         <!-- End Page Header -->
         <div class="row gx-2 gx-lg-3">
             <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2 card card-body">
-                <form action="{{url('/updateProject/'.$project->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{url('/updateStaff/'.$staff->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label class="input-label"
-                                       for="exampleFormControlInput1">Project Name</label>
-                                <input type="text" name="name" class="form-control" value="{{ $project->name }}"
-                                       placeholder="Project Name"
+                                       for="exampleFormControlInput1">Name</label>
+                                <input type="text" name="name" class="form-control" value="{{$staff->name}}"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label class="input-label"
+                                       for="exampleFormControlInput1">Mobile Number</label>
+                                <input type="text" name="mobile" class="form-control" value="{{$staff->mobile}}"
                                        required>
                             </div>
                         </div>
@@ -37,42 +44,67 @@
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label class="input-label"
-                                       for="exampleFormControlInput1">Category</label>
-                                <select name="category" id="category" class="form-control" >
-                                    <option value="app" {{ $project->category == 'app' ? 'selected' : '' }}>App</option>
-                                    <option value="web" {{ $project->category == 'web' ? 'selected' : '' }}>Web</option>
-                                    <option value="both" {{ $project->category == 'both' ? 'selected' : '' }}>Both</option>
-                                </select>
-
+                                       for="exampleFormControlInput1">Email</label>
+                                <input type="text" name="email" class="form-control" value="{{$staff->email}}"
+                                       required>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label class="input-label"
-                                       for="exampleFormControlInput1">Client</label>
-                                <select name="client_id" id="client_id" class="form-control" >
-                                @foreach($clients as $key=>$client)
-                                    <option value="{{ $client->id }}" {{ $client->id == $project->client_id ? 'selected' : '' }}>{{ $client->name }}</option>
-                                @endforeach
-                                </select>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label class="input-label"
-                                       for="exampleFormControlInput1">Description</label>
-                                <input type="text" name="description" class="form-control"
-                                value="{{ $project->description }}"
+                                       for="exampleFormControlInput1">DOB</label>
+                                <input type="date" name="dob" class="form-control" value="{{$staff->dob}}"
                                        required>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" value="updateProject" class="btn btn-primary">submit</button>
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label class="input-label"
+                                       for="exampleFormControlInput1">Role</label>
+                                <input type="text" name="role" class="form-control"value="{{$staff->role}}"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label class="input-label"
+                                       for="exampleFormControlInput1">Address</label>
+                                <input type="text" name="address" class="form-control" value="{{$staff->address}}"
+                                       required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label class="input-label"
+                                       for="exampleFormControlInput1">State</label>
+                                <input type="text" name="state" class="form-control" value="{{$staff->state}}"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label class="input-label"
+                                       for="exampleFormControlInput1">Country</label>
+                                <input type="text" name="country" class="form-control" value="{{$staff->country}}"
+                                       required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 col-12">
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Profile Image</label>
+                                <input type="file" name="image" class="form-control" required>
+                                <img src="{{asset('public/'.$staff->photo)}}" height="100" width="100">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" value="updateStaff" class="btn btn-primary">submit</button>
                 </form>
             </div>
         </div>

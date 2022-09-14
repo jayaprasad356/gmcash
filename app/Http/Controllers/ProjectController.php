@@ -38,7 +38,7 @@ class ProjectController extends Controller
     {
         $query_param = [];
         //$projects = Project::paginate(10);
-        $projects = DB::table('projects')->select('projects.id','projects.name','projects.category','clients.name AS client_name')
+        $projects = DB::table('projects')->select('projects.id','projects.name','projects.category','projects.description','clients.name AS client_name')
 
         ->join('clients','clients.id','=','projects.client_id')->paginate(15);
         
@@ -52,5 +52,25 @@ class ProjectController extends Controller
         $project = Project::find($id);
         $clients = Client::all();
         return view('admin-views.project.edit', compact('project','clients'));
+    }
+
+    public function updateProject(Request $request, $id)
+    {
+        $project=Project::find($id);
+        $project->name=$request->input('name');
+        $project->category=$request->input('category');
+        $project->client_id=$request->input('client_id');
+        $project->description=$request->input('description');
+        $project->save();
+        Toastr::success('Project Updated Successfully!');
+        return back();
+        
+    }
+
+    public function destroyProject($id)
+    {
+        $project=Project::find($id);
+        $project->delete();
+        return back();
     }
 }

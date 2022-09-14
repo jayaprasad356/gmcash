@@ -34,7 +34,7 @@
                                 <div class="avatar avatar-sm avatar-circle">
                                     <img class="avatar-img"
                                          onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
-                                         src="{{asset('public/assets/admin/img/160x160/img1.jpg')}}"
+                                         src="{{asset('public/assets/admin/img/160x160/img3.jpg')}}"
                                          alt="Image Description">
                                     <span class="avatar-status avatar-sm-status avatar-status-success"></span>
                                 </div>

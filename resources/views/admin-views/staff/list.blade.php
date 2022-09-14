@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Project List')
+@section('title', 'Staff List')
 
 @push('css_or_js')
     <script src="https://use.fontawesome.com/74721296a6.js"></script>
@@ -13,11 +13,11 @@
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
                     <h1 class="page-header-title"><i
-                            class="tio-filter-list"></i> Project List
+                            class="tio-filter-list"></i> Staff List
                     </h1>
                 </div>
-                <a href="{{route('addproject')}}" class="btn btn-primary pull-right mr-3"><i
-                        class="tio-add-circle"></i> Add Project
+                <a href="{{route('addstaff')}}" class="btn btn-primary pull-right mr-3"><i
+                        class="tio-add-circle"></i> Add Staff
                 </a>
             </div>
         </div>
@@ -29,8 +29,8 @@
                     <!-- Header -->
                     <div class="card-header">
                         <div class="flex-start">
-                            <h5 class="card-header-title">Project Table</h5>
-                            <h5 class="card-header-title text-primary mx-1">({{ $projects->total() }})</h5>
+                            <h5 class="card-header-title">Staffs Table</h5>
+                            <h5 class="card-header-title text-primary mx-1">({{ $staffs->total() }})</h5>
                         </div>
                         <div>
                             <form action="{{url()->current()}}" method="GET">
@@ -52,41 +52,62 @@
                     <!-- Table -->
                     <div class="table-responsive datatable-custom">
                         <table
-                            class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                            class="table table-bordered table-thead-bordered table-nowrap table-align-middle card-table">
                             <thead class="thead-light">
                             <tr>
                                 <th>#NO</th>
-                                <th>Project Name</th>
-                                <th>Client Name</th>
-                                <th>Category</th>
-                                <th>Description</th>
+                                <th>Name</th>
+                                <th>Mobile Number</th>
+                                <th>Email</th>
+                                <th>DOB</th>
+                                <th>Role</th>
+                                <th>Address</th>
+                                <th>State</th>
+                                <th>Country</th>
+                                <th>Profile</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody id="set-rows">
-                            @foreach($projects as $key=>$project)
+                            @foreach($staffs as $key=>$staff)
                                 <tr>
-                                    <td>{{$projects->firstitem()+$key}}</td>
+                                    <td>{{$staffs->firstitem()+$key}}</td>
                                     <td>
-                                        {{$project->name}}
+                                        {{$staff['name']}}
                                     </td>
                                     <td>
-                                        {{$project->client_name}}
-                                        
+                                        {{$staff['mobile']}}
                                     </td>
                                     <td>
-                                        {{$project->category}}
+                                        {{$staff['email']}}
                                     </td>
                                     <td>
-                                        {{$project->description}}
+                                        {{$staff['dob']}}
                                     </td>
+                                    <td>
+                                        {{$staff['role']}}
+                                    </td>
+                                    <td>
+                                        {{$staff['address']}}
+                                    </td>
+                                    <td>
+                                        {{$staff['state']}}
+                                    </td>
+                                    <td>
+                                        {{$staff['country']}}
+                                    </td>
+                                    <td>
+                                        @if($staff->photo)
+                                           <img src="{{asset('public/'.$staff->photo)}}" height="50" width="50">
+                                        @endif
+                                        </td>
                                     <td>
                                         <a class="btn-sm btn-secondary p-1 pr-2 m-1"
-                                           href="{{route('editProject',[$project->id])}}">
+                                           href="{{route('editStaff',[$staff->id])}}">
                                             <i class="fa fa-pencil pl-1" aria-hidden="true"></i>
                                         </a>
                                         <a class="btn-sm btn-secondary p-1 pr-2 m-1"
-                                           href="{{route('destroyProject',[$project->id])}}">
+                                           href="{{route('destroyStaff',[$staff->id])}}">
                                             <i class="fa fa-trash pl-1" aria-hidden="true"></i>
                                         </a>
                                     </td>

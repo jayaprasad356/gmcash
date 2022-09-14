@@ -52,7 +52,7 @@
                     <!-- Table -->
                     <div class="table-responsive datatable-custom">
                         <table
-                            class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                            class="table table-bordered table-thead-bordered table-nowrap table-align-middle card-table">
                             <thead class="thead-light">
                             <tr>
                                 <th>#NO</th>
@@ -63,6 +63,8 @@
                                 <th>Address</th>
                                 <th>City</th>
                                 <th>State</th>
+                                <th>Country</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody id="set-rows">
@@ -89,6 +91,19 @@
                                     </td>
                                     <td>
                                         {{$client['state']}}
+                                    </td>
+                                    <td>
+                                        {{$client['country']}}
+                                    </td>
+                                    <td>
+                                        <a class="btn-sm btn-secondary p-1 pr-2 m-1"
+                                           href="{{route('editClient',[$client->id])}}">
+                                            <i class="fa fa-pencil pl-1" aria-hidden="true"></i>
+                                        </a>
+                                        <a class="btn-sm btn-secondary p-1 pr-2 m-1"
+                                           href="{{route('destroyClient',[$client->id])}}">
+                                            <i class="fa fa-trash pl-1" aria-hidden="true"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

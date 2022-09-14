@@ -78,6 +78,24 @@
                             </span>
                         </a>
                     </li>
+                    <li class="navbar-vertical-aside-has-menu {{Request::is('admin')?'show':''}}">
+                        <a class="js-navbar-vertical-aside-menu-link nav-link"
+                           href="{{route('addstaff')}}" title="Add Staff">
+                            <i class="tio-home-vs-1-outlined nav-icon"></i>
+                            <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                Add Staff
+                            </span>
+                        </a>
+                    </li>
+                    <li class="navbar-vertical-aside-has-menu {{Request::is('admin')?'show':''}}">
+                        <a class="js-navbar-vertical-aside-menu-link nav-link"
+                           href="{{route('listStaffs')}}" title="Staff List">
+                            <i class="tio-home-vs-1-outlined nav-icon"></i>
+                            <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                Staff List
+                            </span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- End Content -->
